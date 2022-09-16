@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="cdb72a14-904c-4971-b574-c25405dab08c" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="gitdemoFlow" doc:id="87cfdcd9-0cea-4e41-b9ac-0650e08b2143" >
+		<http:listener doc:name="Listener" doc:id="5d57b927-42fc-48e3-a059-3176b31ff0eb" config-ref="HTTP_Listener_config" path="/gitdemo"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="10ababb3-0d19-490b-b1cd-fdf00c9ff2e1" />
+		<logger level="INFO" doc:name="Logger" doc:id="85dc1a3f-2a40-41d1-8546-dd810c0e2bf0" message="testing git"/>
+	</flow>
+</mule>
